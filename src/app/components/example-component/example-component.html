@@ -1,0 +1,118 @@
+
+
+
+
+<p>example-component works!!</p>
+<app-test-component></app-test-component>
+
+
+<!-- HTML Components basics -->
+
+<input type = "text">
+
+
+
+<h1 style="color: blue;"> ==STRING INTERPOLATION==</h1>
+<!-- Used for displaying ELEMENT VALUE -->
+<!-- SYNTAX: {{variableNameFromTS}} -->
+
+<h2> HELLOO {{firstName}} {{lastName}} {{city ? city :'No-city'}} {{getLocation()}}</h2>
+<h2> {{a+b}} {{firstName+lastName}} {{user.name}} {{user.age}}</h2>
+
+
+
+
+
+
+
+<h1 style="color: blue;">==PROPERTY BINDING==</h1>
+<!-- Used for changing compopnent attribute -->
+<!-- SYNTAX: [elementProperty]="variableNameFromTS" -->
+
+
+<!-- String interpolation internlly uses this -->
+ <p [textContent]="location"></p> <!--same as {{location}}-->
+
+<p [style.color]="textColor">Hello</p>
+
+
+  <h3>Registration Form</h3>
+
+  <label>Name:</label>
+  <input type="text" value="DEFAULT VALUE"><br><br>
+
+
+
+  <label>City:</label>
+  <input type="text" [value]="location"><br><br>
+
+  <label>Gender:</label>
+  <input type="radio"> Male
+  <input type="radio"> Female<br><br>
+
+  <label>Country:</label>
+  <select>
+    <option>India</option>
+    <option>USA</option>
+  </select><br><br>
+
+  <label>Skills:</label>
+  <input type="checkbox"> Java
+  <input type="checkbox"> Angular<br><br>
+
+  <button type="submit" [disabled]="isDisabled">Submit</button>
+    <button type="submit" disabled=true>Submit</button>
+
+
+    <h1 style="color: blue;"> ==EVENT BINDING==</h1>
+    <!-- SYNTAX: (event)="methodName()"-->
+<button (click)="event('click')">Click Me</button>
+
+<input type = "text" (input) = "event('trigger')">
+
+
+
+<h1 style="color: blue;">==TWO WAY BINDING==</h1>
+
+<input type = "text" [(ngModel)] = "firstName">
+{{firstName}}
+
+
+<h1 style="color: blue;">==DIRECTIVES==</h1>
+
+
+<!--ngIf-->
+<div *ngIf = "isDisabled; then success else failure"></div>
+
+<ng-template #success>
+<p> successsss </p>
+</ng-template>
+
+<ng-template #failure>
+<p> failuree </p>
+</ng-template>
+
+<input type = "text" *ngIf = "isDisabled else failure" value = {{lastName}}>
+
+<!--ngFor-->
+{{names}}
+
+<div *ngFor="let dummyName of names">{{dummyName}}</div>
+{{students}}
+<div *ngFor="let dummy of students">{{dummy}}</div>
+
+<!--ngStyle = Put style in html itself-->
+
+<h1 [ngStyle] = "{ color : isDisabled ? 'green': 'red'}"> SHOBHANAAA</h1>
+
+<!--ngClass = put in css, good readability and reusbality-->
+<h1 [ngClass] = "{ 'green-class':isDisabled, 'red-class':!isDisabled}"> SHOBHANAAA</h1>
+
+<!--FORMS-->
+<form (ngSubmit)="onSubmit(form1)" #form1="ngForm">
+    <input type="text" id="username" name="username" ngModel>
+    <input type="text" id="password" name="password" ngModel>
+    <button> Submit </button>
+</form>
+
+
